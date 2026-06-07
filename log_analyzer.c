@@ -380,6 +380,16 @@ void* watch_thread_func(void *arg) {
     return NULL;
 }
 
+// int noqueue(work_queue_t *q){
+//     int countt = 0;
+//     int cnt = q->count;
+//     printf("%d\n", q->count);
+//     for(int i = 0; i < WORK_QUEUE_CAP; i++){
+//         if()
+//     }
+//     return cnt;
+// }
+
 int main() {
     init_scanned_db(&scanned_db);
     init_work_queue(&work_queue);
@@ -458,6 +468,9 @@ int main() {
                 pthread_cond_broadcast(&work_queue.not_full); // signalizira svim cekajucim nitima
                 printf("Application stopped.\n");
                 break; // izlazi iz glavne petlje
+            }
+            else if (strcmp(cmd, "noscanner") == 0){
+                printf("%d\n", scanner_count);
             }
             else if (strlen(cmd) > 0) { // nepoznate komande
                 printf("Unknown command: %s\n", cmd);
